@@ -1,0 +1,12 @@
+﻿@model FirstWebStore.Models.Product
+
+<h2>Addition product</h2>
+<form asp-action="Create" asp-controller="Home">
+    <p>
+        <label asp-for="Name">Name</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    <p>
+        <input type="submit" value="Send" />
+    </p>
+</form>

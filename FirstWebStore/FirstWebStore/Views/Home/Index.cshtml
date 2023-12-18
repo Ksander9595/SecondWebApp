@@ -1,0 +1,17 @@
+﻿@model IEnumerable<FirstWebStore.Models.Product>
+
+<h1>Products List</h1>
+
+<p><a asp-action="Create">Add product</a></p>
+<table class="table">
+    <tr><th>Id</th><th>Name</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Edit</a></td>
+            <td><form asp-action="Delete" asp-controller="Home" method="post" asp-route-id="@item.Id"><input type="submit" value="Delete" /></form></td>
+        </tr>
+    }
+</table>
