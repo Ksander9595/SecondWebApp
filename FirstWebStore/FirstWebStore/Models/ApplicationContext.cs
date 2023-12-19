@@ -7,6 +7,7 @@ namespace FirstWebStore.Models
         public DbSet<Product> Products { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
     }

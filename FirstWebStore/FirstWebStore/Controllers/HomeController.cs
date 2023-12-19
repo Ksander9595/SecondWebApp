@@ -18,25 +18,21 @@ namespace FirstWebStore.Controllers
         {
             return View(await db.Products.ToListAsync());
         }
-        public IActionResult Create()
+        public async Task<IActionResult> Sale()
         {
             return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> Create(Product product)
+        public IActionResult Create()
         {
-            db.Products.Add(product);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
             if(id != null)
             {
-                Product product = new Product { Id = id.Value };
-                db.Entry(product).State = EntityState.Deleted;
+                Product? product = await db.Products.FirstOrDefaultAsync(p => p.Id == id);
+                db.Products.Remove(product);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
                 
@@ -58,6 +54,25 @@ namespace FirstWebStore.Controllers
             db.Products.Update(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }       
+        public IActionResult CreateEquipment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateEquipment(Equipment equipment)
+        {
+            db.Products.Add(equipment);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+        public IActionResult CreateMoto()
+        {
+            return View();
+        }
+        public IActionResult CreateSpareParts()
+        {
+            return View();
         }
     }
 }

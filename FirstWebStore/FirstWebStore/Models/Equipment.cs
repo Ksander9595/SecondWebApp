@@ -1,9 +1,8 @@
 ﻿namespace FirstWebStore.Models
 {
-    public class Equipment : IProduct
+    public class Equipment : Product
     {
-        public int Id { get; set; } 
-        public string Name { get; set; }
         public bool NewEquipment { get; set; }
+        public EquipmentType equipType { get; set; }
     }
 }

@@ -8,7 +8,7 @@
         CoolingSystem,
         BodyParts,
         Tuning,
-        
-
+        Consumables
+            
     }
 }

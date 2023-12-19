@@ -1,0 +1,25 @@
+﻿@using FirstWebStore.Models
+@model FirstWebStore.Models.Equipment
+
+<h2>Addition Equipment</h2>
+<form asp-action="CreateEquipment" asp-controller="Home">
+    <p>
+        <label asp-for="Name">Name</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    <p>
+        <label asp-for="equipType">Equipment Type</label><br />
+        <select asp-for="equipType" asp-items="Html.GetEnumSelectList<EquipmentType>()"></select>
+    </p>
+    <p>
+        <label asp-for="NewEquipment">New Equipment</label><br />
+        <input type="checkbox" asp-for="@Model.NewEquipment" />
+    </p>
+    <p>
+        <label asp-for="Price">Price</label><br />
+        <input type="number" asp-for="Price" />
+    </p>
+    <p>
+        <input type="submit" value="Send" />
+    </p> 
+</form>

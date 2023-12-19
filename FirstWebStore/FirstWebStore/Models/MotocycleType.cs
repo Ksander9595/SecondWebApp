@@ -1,6 +1,6 @@
 ﻿namespace FirstWebStore.Models
 {
-    public enum MotocycleClass
+    public enum MotocycleType
     {
         Cruiser,
         Sport,

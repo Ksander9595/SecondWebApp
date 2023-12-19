@@ -1,14 +1,13 @@
 ﻿namespace FirstWebStore.Models
 {
-    public class Motocycle : IProduct
+    public class Motocycle : Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
         public int Year { get; set; }
         public int Hp { get; set; }
         public int EngineCapacity { get; set; }
-        public MotocycleClass motocycleClass { get; set; }
+        public MotocycleType motoType { get; set; }
         public bool CarMileage { get; set; }
+        public bool NewMotocycle { get; set; }
 
     }
 }

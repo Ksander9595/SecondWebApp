@@ -1,9 +1,7 @@
 ﻿namespace FirstWebStore.Models
 {
-    public class SpareParts : IProduct
+    public class SpareParts : Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
+        public SparePartsType partsType { get; set; }
     }
 }
