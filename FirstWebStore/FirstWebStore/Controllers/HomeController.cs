@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FirstWebStore.Models;
 using Microsoft.EntityFrameworkCore;
+using FirstWebStore.Entities;
 
 namespace FirstWebStore.Controllers
 {
@@ -53,7 +54,7 @@ namespace FirstWebStore.Controllers
             return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(Product product)
+        public async Task<IActionResult> Edit(ProductBase product)
         {
             db.Products.Update(product);
             await db.SaveChangesAsync();
@@ -64,8 +65,12 @@ namespace FirstWebStore.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateEquipment(Product product)
+        public async Task<IActionResult> CreateEquipment(Equipment equipment)
         {
+            db.Equipments.Add(equipment);
+            await db.SaveChangesAsync();
+            Product? product = new Product();
+            product.EquipmentId = equipment.Id;
             db.Products.Add(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -78,16 +83,6 @@ namespace FirstWebStore.Controllers
         {
             return View();
         }
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create(Product product)
-        {
-            db.Products.Add(product);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
+        
     }
 }
