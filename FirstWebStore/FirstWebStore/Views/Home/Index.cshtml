@@ -1,36 +1,18 @@
-﻿@using FirstWebStore.Models
-@model IEnumerable<FirstWebStore.Models.Product>
+﻿@model IEnumerable<FirstWebStore.Models.Product>
 
 @{
     ViewBag.Title = "HomePage";
 }
 
-<h1>Motocycles for Sale</h1>
-
-<tr>
-    <th><a asp-action="Sale">Motocycles</a></th>
-    <th><a asp-action="Equipment">Equipment</a></th>
-    <th><a asp-action="Accessories">Accessories</a></th>
-    <th><a asp-action="SpareParts">SpareParts</a></th>
-    <th><a asp-action="Create">Add product</a></th>
-</tr>
-
 <table class="table">
-    <tr><th>Name</th><th>Price</th></tr>
+    <tr><th>Id</th><th>Name</th><th>Price</th></tr>
     @foreach (var item in Model)
     {
         <tr>
-            @if (item is Equipment e)
-            {
-                <td>@e.equipType.ToString()</td>
-                <td>@e.Name</td>
-            }
-            else
-            {
-                <td>@item.Name</td>
-            }
+            <td>@item.Id</td>
+            <td>@item.Name</td>
             <td>@item.Price</td>
-            <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Edit</a></td>
+            <td><form asp-action="Edit" asp-controller="Home" method="get" asp-route-id="@item.Id"><input type="submit" value="Edit" /></form></td>
             <td><form asp-action="Delete" asp-controller="Home" method="post" asp-route-id="@item.Id"><input type="submit" value="Delete" /></form></td>
         </tr>
     }

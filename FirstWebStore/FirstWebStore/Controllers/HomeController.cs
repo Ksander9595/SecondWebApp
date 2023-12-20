@@ -18,11 +18,15 @@ namespace FirstWebStore.Controllers
         {
             return View(await db.Products.ToListAsync());
         }
-        public async Task<IActionResult> Sale()
+        public IActionResult Sale()
         {
             return View();
         }
-        public IActionResult Create()
+        public IActionResult Equipment()
+        {
+            return View();
+        }
+        public IActionResult CreateProduct()
         {
             return View();
         }
@@ -60,9 +64,9 @@ namespace FirstWebStore.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateEquipment(Equipment equipment)
+        public async Task<IActionResult> CreateEquipment(Product product)
         {
-            db.Products.Add(equipment);
+            db.Products.Add(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -73,6 +77,17 @@ namespace FirstWebStore.Controllers
         public IActionResult CreateSpareParts()
         {
             return View();
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Product product)
+        {
+            db.Products.Add(product);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }

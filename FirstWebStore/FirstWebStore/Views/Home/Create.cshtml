@@ -1,6 +1,12 @@
-﻿
-<h2>Addition product</h2>
+﻿@model FirstWebStore.Models.Product
 
-<p><a asp-controller="Home" asp-action="CreateEquipment">Equipment</a></p>
-<p><a asp-action="CreateSpareParts" asp-controller="Home">SpareParts</a></p>
-<p><a asp-action="CreateMoto" asp-controller="Home">Motocycle</a></p>
+<h2>Добавление пользователя</h2>
+<form asp-action="create" asp-controller="home">
+    <p>
+        <label asp-for="Name">Имя</label><br />
+        <input type="text" asp-for="Name" />
+    </p>    
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>

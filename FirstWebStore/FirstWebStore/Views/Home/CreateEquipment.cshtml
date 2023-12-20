@@ -1,7 +1,10 @@
 ﻿@using FirstWebStore.Models
 @model FirstWebStore.Models.Equipment
 
-<h2>Addition Equipment</h2>
+@{
+    ViewBag.Title = "Addition Equipment";
+}
+
 <form asp-action="CreateEquipment" asp-controller="Home">
     <p>
         <label asp-for="Name">Name</label><br />

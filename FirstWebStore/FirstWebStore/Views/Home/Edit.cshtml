@@ -1,6 +1,9 @@
-﻿@model FirstWebStore.Models.Product
+﻿@using FirstWebStore.Models
+@model FirstWebStore.Models.Product
 
-<h2>Edit product</h2>
+@{
+    ViewBag.Title = "Edit";
+}
 <form asp-action="Edit" asp-controller="Home" asp-route-id="@Model.Id">
     <p>
         <label asp-for="Name">Name</label><br />
