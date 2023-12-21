@@ -2,7 +2,7 @@
 {
     public class SparePart : ProductBase
     {
-        public SparePartsType PartsType { get; set; }
+        public SparePartType PartsType { get; set; }
         public virtual Product Product { get; set; }
     }
 }

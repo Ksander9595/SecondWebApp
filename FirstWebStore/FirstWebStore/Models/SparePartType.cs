@@ -1,6 +1,6 @@
 ﻿namespace FirstWebStore.Models
 {
-    public enum SparePartsType
+    public enum SparePartType
     {        
         Chassis,        
         Optics,

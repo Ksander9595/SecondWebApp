@@ -11,8 +11,7 @@ namespace FirstWebStore.Controllers
        
         public HomeController(ApplicationContext context)
         {
-            db = context;
-        
+            db = context;       
         }
 
         public async Task<IActionResult> Index()
@@ -71,8 +70,11 @@ namespace FirstWebStore.Controllers
             await db.SaveChangesAsync();
             Product? product = new Product();
             product.EquipmentId = equipment.Id;
+            product.Type = ProductTypes.Equipment;
             db.Products.Add(product);
             await db.SaveChangesAsync();
+            var productEquip = db.Products.Where(p => p.EquipmentId==null).ToList();
+            var equipmentList = db.Equipments.Where(e=>e.Id == )
             return RedirectToAction("Index");
         }
         public IActionResult CreateMoto()

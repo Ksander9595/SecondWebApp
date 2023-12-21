@@ -6,11 +6,11 @@ namespace FirstWebStore.Models
     {
         public int Id { get; set; }
         public ProductTypes Type { get; set; }
-        public int? EquipmentId { get; set; }
+        public int? EquipmentId { get; set; }//внешний ключ
         public int? MotocycleId { get; set; }
         public int? SparePartId { get; set; }
 
-        public virtual Equipment? Equipment { get; set; }
+        public virtual Equipment? Equipment { get; set; }//навигационное свойство
         public virtual Motocycle? Motocycle { get; set; }
         public virtual SparePart? SparePart { get; set; }
     }
