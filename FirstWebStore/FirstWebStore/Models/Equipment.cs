@@ -4,7 +4,6 @@
     {
         public bool NewEquipment { get; set; }
         public EquipmentType EquipType { get; set; }
-
-        public virtual Product Product { get; set; }
+      
     }
 }

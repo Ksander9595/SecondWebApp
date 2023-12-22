@@ -4,3 +4,37 @@
 @{
     ViewBag.Title = "Addition Motocycle";
 }
+
+<form asp-action="CreateMoto" asp-controller="Home">
+    <p>
+        <label asp-for="Name">Name</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    <p>
+        <label asp-for="Year">Year</label><br />
+        <input type="number" asp-for="Year" />
+    </p>
+    <p>
+        <label asp-for="Hp">Hp</label><br />
+        <input type="number" asp-for="Hp" />
+    </p>
+    <p>
+        <label asp-for="EngineCapacity">Engine Capacity</label><br />
+        <input type="number" asp-for="EngineCapacity" />
+    </p>
+    <p>
+        <label asp-for="MotoType">Moto Type</label><br />
+        <select asp-for="MotoType" asp-items="Html.GetEnumSelectList<MotocycleType>()"></select>
+    </p>
+    <p>
+        <label asp-for="CarMileage">Car Mileage</label><br />
+        <input type="checkbox" asp-for="@Model.CarMileage" />
+    </p>
+    <p>
+        <label asp-for="NewMotocycle">New Motocycle</label><br />
+        <input type="checkbox" asp-for="@Model.NewMotocycle" />
+    </p>
+    <p>
+        <input type="submit" value="Send" />
+    </p>
+</form>

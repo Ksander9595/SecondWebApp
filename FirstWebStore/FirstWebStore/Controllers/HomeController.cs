@@ -16,7 +16,7 @@ namespace FirstWebStore.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await db.Products.ToListAsync());
+            return View(await db.ProductBases.ToListAsync());
         }
         public IActionResult Sale()
         {
@@ -35,8 +35,8 @@ namespace FirstWebStore.Controllers
         {
             if(id != null)
             {
-                Product? product = await db.Products.FirstOrDefaultAsync(p => p.Id == id);
-                db.Products.Remove(product);
+                ProductBase? product = await db.ProductBases.FirstOrDefaultAsync(p => p.Id == id);
+                db.ProductBases.Remove(product);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
                 
@@ -47,7 +47,7 @@ namespace FirstWebStore.Controllers
         {
             if (id != null)
             {
-                Product? product = await db.Products.FirstOrDefaultAsync(p => p.Id == id);
+                ProductBase? product = await db.ProductBases.FirstOrDefaultAsync(p => p.Id == id);
                 if(product != null) return View(product);
             }
             return NotFound();
@@ -55,10 +55,10 @@ namespace FirstWebStore.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ProductBase product)
         {
-            db.Products.Update(product);
+            db.ProductBases.Update(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
-        }       
+        }
         public IActionResult CreateEquipment()
         {
             return View();
@@ -66,20 +66,21 @@ namespace FirstWebStore.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateEquipment(Equipment equipment)
         {
-            db.Equipments.Add(equipment);
+            equipment.Type = ProductTypes.Equipment;
+            db.ProductBases.Add(equipment);          
             await db.SaveChangesAsync();
-            Product? product = new Product();
-            product.EquipmentId = equipment.Id;
-            product.Type = ProductTypes.Equipment;
-            db.Products.Add(product);
-            await db.SaveChangesAsync();
-            var productEquip = db.Products.Where(p => p.EquipmentId==null).ToList();
-            var equipmentList = db.Equipments.Where(e=>e.Id == )
             return RedirectToAction("Index");
         }
         public IActionResult CreateMoto()
         {
             return View();
+        }
+        public async Task<IActionResult> CreateMoto(Motocycle motocycle)
+        {
+            motocycle.Type = ProductTypes.Motocycle;
+            db.ProductBases.Add(motocycle);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
         public IActionResult CreateSpareParts()
         {

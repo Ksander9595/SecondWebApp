@@ -8,7 +8,7 @@
         public MotocycleType MotoType { get; set; }
         public bool CarMileage { get; set; }
         public bool NewMotocycle { get; set; }
-        public virtual Product Product { get; set; }
+        
 
     }
 }

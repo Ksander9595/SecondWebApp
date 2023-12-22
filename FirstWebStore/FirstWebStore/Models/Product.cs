@@ -5,7 +5,7 @@ namespace FirstWebStore.Models
     public class Product
     {
         public int Id { get; set; }
-        public ProductTypes Type { get; set; }
+        //public ProductTypes Type { get; set; }
         public int? EquipmentId { get; set; }//внешний ключ
         public int? MotocycleId { get; set; }
         public int? SparePartId { get; set; }
@@ -22,10 +22,4 @@ namespace FirstWebStore.Models
         SparePart,
     }
 
-    public class ProductBase
-    {
-        public int Id { get; set; }
-        public string? Name { get; set; }
-        public int? Price { get; set; }
-    }
 }
