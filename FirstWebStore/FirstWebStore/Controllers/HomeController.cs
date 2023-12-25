@@ -18,9 +18,10 @@ namespace FirstWebStore.Controllers
         {
             return View(await db.ProductBases.ToListAsync());
         }
-        public IActionResult Sale()
+        public async Task<IActionResult> Sale()
         {
-            return View();
+            var MotoList = await db.ProductBases.Where(m=>m.Type == ProductTypes.Motocycle).ToListAsync();
+            return View(MotoList);
         }
         public IActionResult Equipment()
         {
@@ -75,6 +76,7 @@ namespace FirstWebStore.Controllers
         {
             return View();
         }
+        [HttpPost]
         public async Task<IActionResult> CreateMoto(Motocycle motocycle)
         {
             motocycle.Type = ProductTypes.Motocycle;
@@ -86,6 +88,14 @@ namespace FirstWebStore.Controllers
         {
             return View();
         }
-        
+        [HttpPost]
+        public async Task<IActionResult> CreateSpareParts(SparePart sparePart)
+        {
+            sparePart.Type = ProductTypes.SparePart;
+            db.ProductBases.Add(sparePart);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
     }
 }

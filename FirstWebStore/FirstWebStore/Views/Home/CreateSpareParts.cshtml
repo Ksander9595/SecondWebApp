@@ -4,3 +4,24 @@
 @{
     ViewBag.Title = "Addition SpareParts";
 }
+<form asp-action="CreateSpareParts" asp-controller="Home">
+    <p>
+        <label asp-for="Name">Name</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    <p>
+        <label asp-for="PartsType">Spare Part Type</label><br />
+        <select asp-for="PartsType" asp-items="Html.GetEnumSelectList<SparePartType>()"></select>
+    </p>
+    <p>
+        <label asp-for="NewSparePart">New Spare Part</label><br />
+        <input type="checkbox" asp-for="@Model.NewSparePart" />
+    </p>
+    <p>
+        <label asp-for="Price">Price</label><br />
+        <input type="number" asp-for="Price" />
+    </p>
+    <p>
+        <input type="submit" value="Send" />
+    </p>
+</form>
