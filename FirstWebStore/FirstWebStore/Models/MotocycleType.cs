@@ -2,12 +2,13 @@
 {
     public enum MotocycleType
     {
-        Cruiser,
+        Cruiser = 1,
         Sport,
         Pit,
         Cross,
         Chopper,
-        Custom
+        Custom,
+        none = 0
 
     }
 }

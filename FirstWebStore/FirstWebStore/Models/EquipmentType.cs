@@ -2,10 +2,11 @@
 {
     public enum EquipmentType
     {
-        Helmet,
+        Helmet = 1,
         Boots,
         Protection,
         Cloth,
-        Accessories
+        Accessories,
+        none = 0
     }
 }

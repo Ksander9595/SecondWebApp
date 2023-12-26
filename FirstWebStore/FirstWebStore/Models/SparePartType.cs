@@ -2,12 +2,13 @@
 {
     public enum SparePartType
     {        
-        Chassis,        
+        Chassis = 1,        
         Optics,
         BrakeSystem,
         CoolingSystem,
         BodyParts,
         Tuning,
-        Consumables
+        Consumables,
+        none = 0
     }
 }

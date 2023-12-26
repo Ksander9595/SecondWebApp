@@ -11,6 +11,10 @@
         <input type="text" asp-for="Name" />
     </p>
     <p>
+        <label asp-for="ModelMoto">Model</label><br />
+        <input type="text" asp-for="ModelMoto" />
+    </p>
+    <p>
         <label asp-for="Year">Year</label><br />
         <input type="number" asp-for="Year" />
     </p>
@@ -28,11 +32,19 @@
     </p>
     <p>
         <label asp-for="CarMileage">Car Mileage</label><br />
-        <input type="checkbox" asp-for="@Model.CarMileage" />
+        <input type="number" asp-for="CarMileage" />
     </p>
     <p>
         <label asp-for="NewMotocycle">New Motocycle</label><br />
         <input type="checkbox" asp-for="@Model.NewMotocycle" />
+    </p>
+    <p>
+        <label asp-for="OK">Ok</label><br />
+        <input type="checkbox" asp-for="@Model.OK" />
+    </p>
+    <p>
+        <label asp-for="Document">Document</label><br />
+        <input type="checkbox" asp-for="@Model.Document" />
     </p>
     <p>
         <label asp-for="Price">Price</label><br />

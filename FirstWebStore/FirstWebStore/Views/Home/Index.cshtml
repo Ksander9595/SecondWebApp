@@ -1,14 +1,23 @@
-﻿@model IEnumerable<FirstWebStore.Models.ProductBase>
-@using FirstWebStore.Models
-
+﻿@using FirstWebStore.Models
+@model IndexViewModel;
 
 @{
     ViewBag.Title = "HomePage";
 }
 
+<form method="get">
+    <label>Name: </label>
+    <input name="name" value="@Model.FilterViewModel.SelectedName" />
+
+    <label>Type: </label>
+    <select name="type" asp-items="Html.GetEnumSelectList<ProductTypes>()"></select>
+
+    <input type ="submit" value="Filter" />
+</form>
+
 <table class="table">
     <tr><th>Id</th><th>Name</th><th>Price</th><th>Type</th></tr>
-    @foreach (var item in Model)
+    @foreach (var item in Model.ProductBase)
     {
         <tr>
             <td>@item.Id</td>
@@ -18,7 +27,7 @@
                 }
                 @if(item is Motocycle m)
                 {
-                    <p>@m.MotoType @m.Name</p>
+                    <p>@m.MotoType @m.Name @m.ModelMoto</p>
                 }
                 @if(item is SparePart s)
                 {

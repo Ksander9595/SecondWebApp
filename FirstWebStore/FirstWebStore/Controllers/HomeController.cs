@@ -14,18 +14,64 @@ namespace FirstWebStore.Controllers
             db = context;       
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string name, ProductTypes type)
         {
-            return View(await db.ProductBases.ToListAsync());
+            IEnumerable<ProductBase> productBase = await db.ProductBases.ToListAsync();
+            if(!string.IsNullOrEmpty(name))
+            {
+                productBase = productBase.Where(p => p.Name!.Contains(name));
+            }
+            if(type != 0)
+            {
+                productBase = productBase.Where(p => p.Type == type);
+            }
+
+            IndexViewModel viewModel = new IndexViewModel(productBase, new FilterViewModel(name));
+            return View(viewModel);
+        }   
+        public async Task<IActionResult> Sale(string name, MotocycleType type)
+        {
+            IEnumerable<Motocycle> motocycles = await db.Motocycles.ToListAsync();
+            if (!string.IsNullOrEmpty(name))
+            {
+                motocycles = motocycles.Where(p => p.Name!.Contains(name));
+            }  
+            if(type != 0)
+            {
+                motocycles = motocycles.Where(p=>p.MotoType == type);
+            }
+
+            IndexViewModel viewModel = new IndexViewModel(motocycles, new FilterViewModel(name));
+            return View(viewModel);
         }
-        public async Task<IActionResult> Sale()
+        public async Task<IActionResult> Equipment(string name, EquipmentType type)
         {
-            var MotoList = await db.ProductBases.Where(m=>m.Type == ProductTypes.Motocycle).ToListAsync();
-            return View(MotoList);
+            IEnumerable<Equipment> equipmants = await db.Equipments.ToListAsync();
+            if (!string.IsNullOrEmpty(name))
+            {
+                equipmants = equipmants.Where(p => p.Name!.Contains(name));
+            }
+            if(type != 0)
+            {
+                equipmants = equipmants.Where(p=>p.EquipType == type);
+            }
+            IndexViewModel viewModel = new IndexViewModel(equipmants, new FilterViewModel(name));
+            return View(viewModel);
         }
-        public IActionResult Equipment()
+        public async Task<IActionResult> SpareParts(string name, SparePartType type)
         {
-            return View();
+            IEnumerable<SparePart> spareParts = await db.SpareParts.ToListAsync();
+            if (!string.IsNullOrEmpty(name))
+            {
+                spareParts = spareParts.Where(p => p.Name!.Contains(name));
+            }
+            if(type != 0)
+            {
+                spareParts = spareParts.Where(p => p.PartsType == type);
+            }
+
+            IndexViewModel viewModel = new IndexViewModel(spareParts, new FilterViewModel(name));
+            return View(viewModel);
         }
         public IActionResult CreateProduct()
         {

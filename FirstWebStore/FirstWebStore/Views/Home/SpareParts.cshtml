@@ -1,8 +1,8 @@
 ﻿@using FirstWebStore.Models
-@model IndexViewModel
+@model IndexViewModel;
 
 @{
-    ViewBag.Title = "Equipment";
+    ViewBag.Title = "SpareParts";
 }
 
 <form method="get">
@@ -10,21 +10,21 @@
     <input name="name" value="@Model.FilterViewModel.SelectedName" />
 
     <label>Type: </label>
-    <select name="type" asp-items="Html.GetEnumSelectList<EquipmentType>()"></select>
+    <select name="type" asp-items="Html.GetEnumSelectList<SparePartType>()"></select>
 
     <input type="submit" value="Filter" />
 </form>
 
 <table class="table">
-    <tr><th>Id</th><th>Name</th><th>Used</th><th>Price</th></tr>
+    <tr><th>Id</th><th>Name</th><th>New SparePart</th><th>Price</th></tr>
     @foreach (var item in Model.ProductBase)
     {
-        @if (item is Equipment e)
+        @if (item is SparePart s)
         {
             <tr>
-                <td>@e.Id</td>
-                <td>@e.EquipType.ToString() @e.Name</td>
-                <td>@if(e.NewEquipment)
+                <td>@s.Id</td>
+                <td>@s.PartsType @s.Name</td>
+                <td>@if(s.NewSparePart)
                     {
                         <p>New</p>
                     }
@@ -32,7 +32,9 @@
                     {
                         <p>Used</p>
                     }
-              <td>@item.Price</td>            
+                </td>
+            <td>@item.Price</td>
+            
             <td><form asp-action="Edit" asp-controller="Home" method="get" asp-route-id="@item.Id"><input type="submit" value="Edit" /></form></td>
             <td><form asp-action="Delete" asp-controller="Home" method="post" asp-route-id="@item.Id"><input type="submit" value="Delete" /></form></td>
         </tr>
